@@ -1,7 +1,7 @@
 // Public page: no login required (A2P reviewers and guests need to read it).
 
-const OPERATOR = "YOUR NAME OR BUSINESS NAME";
-const CONTACT_EMAIL = "your-email@example.com";
+const OPERATOR = "Armoni Tigner";
+const CONTACT_EMAIL = "DevWithAT@gmail.com";
 const LAST_UPDATED = "October 2026";
 
 export const metadata = {
