@@ -94,8 +94,8 @@ function UploadForm() {
   }
 
   return (
-    <main className="max-w-2xl mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-1">Start new threads</h1>
+    <main className="max-w-2xl mx-auto py-6 sm:py-10 px-4">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-1">Start new threads</h1>
       <p className="text-sm opacity-60 mb-8">
         Upload a CSV with columns{" "}
         <span className="font-mono">name, phone, party_size, tag</span>. Only
@@ -106,7 +106,7 @@ function UploadForm() {
         onDrop={handleDrop}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        className="flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed p-10 cursor-pointer transition hover:opacity-80"
+        className="flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed p-8 sm:p-10 cursor-pointer transition hover:opacity-80"
         style={{
           borderColor: isDragging ? "var(--violet)" : "var(--cloud-line)",
           backgroundColor: isDragging ? "var(--cloud)" : "var(--card)",
@@ -116,7 +116,7 @@ function UploadForm() {
         <span className="font-semibold">
           {isDragging ? "Drop it!" : "Choose a CSV file"}
         </span>
-        <span className="text-xs opacity-50">or drag one here</span>
+        <span className="hidden sm:block text-xs opacity-50">or drag one here</span>
         <input
           type="file"
           accept=".csv"
@@ -132,7 +132,7 @@ function UploadForm() {
             {preview.map((row, i) => (
               <div
                 key={i}
-                className="rounded-xl px-4 py-3 flex items-center justify-between text-sm"
+                className="rounded-xl px-4 py-3 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-sm"
                 style={{
                   backgroundColor: "var(--card)",
                   border: "1px solid var(--cloud-line)",
@@ -167,7 +167,7 @@ function UploadForm() {
       {preview.length > 0 && (
         <button
           onClick={handleImport}
-          className="mt-6 px-5 py-2.5 rounded-full text-white font-semibold text-sm"
+          className="mt-6 w-full sm:w-auto px-5 py-3 rounded-full text-white font-semibold text-sm"
           style={{ backgroundColor: "var(--violet)" }}
         >
           Add to the ledger →

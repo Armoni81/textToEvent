@@ -14,6 +14,7 @@
   --cloud: #f7f5fc;
   --cloud-line: #e6e0f5;
   --card: #ffffff;
+  color-scheme: light;
 }
 
 [data-theme="dark"] {
@@ -26,6 +27,11 @@
   --cloud: #150f1f;
   --cloud-line: #2e2740;
   --card: #201931;
+  color-scheme: dark;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -33,6 +39,28 @@ body {
   color: var(--ink);
   font-family: 'Space Grotesk', sans-serif;
   transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
+}
+
+/* Make dropdown menus readable in both light and dark mode */
+select,
+option,
+optgroup {
+  color: var(--ink);
+}
+
+option,
+optgroup {
+  background-color: var(--card);
+}
+
+/* Phones: 16px fields stop iPhone Safari from zooming in when you tap one */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
 }
 
 .font-mono {

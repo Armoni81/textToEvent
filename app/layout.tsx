@@ -7,6 +7,12 @@ export const metadata = {
   description: "Manage your guest list and messaging",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#6c5ce7",
+};
+
 const themeInitScript = `
 (function() {
   try {
@@ -16,6 +22,10 @@ const themeInitScript = `
   } catch (e) {}
 })();
 `;
+
+// Every link in the header nav shares this exact style.
+const NAV_ITEM =
+  "px-3 py-2 rounded-full text-sm font-medium text-white/90 hover:bg-white/10";
 
 export default function RootLayout({
   children,
@@ -29,26 +39,31 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col">
         <header style={{ backgroundColor: "var(--violet)" }}>
-          <div className="max-w-4xl mx-auto px-4 py-5 flex items-center justify-between">
-            <a href="/" className="text-2xl font-bold tracking-tight text-white">
+          {/*
+            Phones: row 1 = logo + theme toggle (top right), row 2 = nav links.
+            Larger screens: everything on one row, theme toggle still far right.
+          */}
+          <div className="max-w-4xl mx-auto px-4 pt-3 pb-2 sm:py-5 flex flex-wrap sm:flex-nowrap items-center">
+            <a
+              href="/"
+              className="order-1 mr-auto text-xl sm:text-2xl font-bold tracking-tight text-white"
+            >
               text<span style={{ color: "var(--sunshine)" }}>To</span>Event
             </a>
-            <nav className="flex items-center gap-1 text-sm font-medium">
-              <a
-                href="/"
-                className="px-3 py-1.5 rounded-full text-white/90 hover:bg-white/10"
-              >
+
+            <nav className="order-3 sm:order-2 w-[calc(100%+1.5rem)] -mx-3 sm:w-auto sm:mx-0 flex items-center justify-between sm:justify-end sm:gap-1">
+              <a href="/" className={NAV_ITEM}>
                 Guests
               </a>
-              <a
-                href="/upload"
-                className="px-3 py-1.5 rounded-full text-white/90 hover:bg-white/10"
-              >
+              <a href="/upload" className={NAV_ITEM}>
                 Upload
               </a>
-              <ThemeToggle />
               <SignOutButton />
             </nav>
+
+            <div className="order-2 sm:order-3 -mr-3 sm:ml-1">
+              <ThemeToggle />
+            </div>
           </div>
         </header>
 
@@ -60,7 +75,7 @@ export default function RootLayout({
         >
           <div className="max-w-4xl mx-auto px-4 py-6 flex items-center justify-between text-xs opacity-60">
             <span>© textToEvent</span>
-            <a href="/privacy" className="underline hover:opacity-70">
+            <a href="/privacy" className="underline hover:opacity-70 py-2">
               Privacy Policy
             </a>
           </div>
